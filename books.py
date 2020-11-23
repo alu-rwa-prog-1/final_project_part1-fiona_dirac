@@ -20,6 +20,7 @@ class Books:
         self.delete_book = 0
         self.borrower_name = 0
         self.book_liked = 0
+        self.borrowed_books = {}  # a dictionary that we create for borrowed books
 
     def add_books(self, book_collection):
         book_name = input("What is the title of the book you want to add?")
@@ -50,7 +51,7 @@ class Books:
                 book_collection.remove(c)
                 break
 
-    def borrow_book(self,book_collection):
+    def borrow_book(self, book_collection):
         print("The current books in the library are: ")
         for p in book_collection:
             print(p)
@@ -58,4 +59,16 @@ class Books:
         self.borrower_name = borrower_name
         book_liked = input("Please enter the identification number of the book you'd like to borrow: ")
         self.book_liked = book_liked
+        if self.book_liked not in self.borrowed_books.keys():
+            self.borrowed_books.update({book_liked: borrower_name})
+            print("The book is available, have a good read! ")
+        else:
+            print("Sorry, the book has been borrowed, try borrowing a different book")
 
+    def return_book(self, book_collection):
+        return_book = input("Please enter the identification number of the book you would like to return: ")
+        if return_book in self.borrowed_books:
+            self.borrowed_books.pop(return_book)
+            print("Thank you for returning the book!")
+        else:
+            print("Sorry, that book is not in our current collection")
