@@ -14,6 +14,35 @@ class Student(User):
         self.year = year
         self.penalty = 0
 
+    def extend_borrowing(self, borrowed_books):
+
+        """
+
+        """
+        book_name = input("Please enter the book you'd like to borrow: ").upper()
+        for student in borrowed_books:
+            if student["name"] == self.name and book_name == stuent["book_name"]:
+                if student["extended"] == 0 :
+                    if student["month"] in [1, 3, 5, 7, 8, 10, 12]:
+                        if student["day"] > 17 and student["month"] != 7:
+                            student["day"] = stuent["day"] + 14 - 31
+                        elif student["day"] > 17 and student["month"] == 7:
+                            student["day"] = stuent["day"] + 14 - 31
+                        else:
+                            student["day"] += 14
+
+                        if student["month"] != 12:
+                            student["month"] += 1
+                        else:
+                            student["month"] = 1
+                else:
+                    if student["day"] > 16:
+                        student["day"] = stuent["day"] + 14 - 30
+                    else:
+                        student["day"] += 14
+                    student["month"] += 1
+
+
     def borrow_book(self, book_collection, borrowed_books):
         i = 0              #number of books in possession
         j = 0              #number of book the user can borrow
