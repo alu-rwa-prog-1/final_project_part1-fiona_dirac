@@ -128,7 +128,7 @@ class User:
 
 # test init
 user = User("d", 1, "d.murairi")
-print("{}, {}, {}".format(user.name, user.id, user.email))
+#print("{}, {}, {}".format(user.name, user.id, user.email))
 
 # see all books
 books = [{"name": "PYTHON", "id": "1", "status": "BORROWED", "author": "DIRAC"},
