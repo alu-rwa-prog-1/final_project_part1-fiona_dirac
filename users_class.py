@@ -4,10 +4,10 @@
 
 class User:
 
-    def __init__(self, name, email, password):
+    def __init__(self, name, email, passworld):
         self.name = name
         self.email = email
-        self.password = password
+        self.passworld = passworld
 
     def see_all_book(self, book_list):
 
@@ -16,7 +16,7 @@ class User:
         ------------
         This method helps the user to list all books
         that the library has and display if it’s borrowed or not.
-        it receives the first argument as a list of dictionaries.
+        it receive as the first argument a list of dictionaries.
         see_all_book (list)
         ;return: 0 when the list is empty.
         """
@@ -36,7 +36,7 @@ class User:
         ------------------
         This method helps the user to list a specific
         book using the name of the book given.
-        it receives a list of dictionaries as the argument.
+        it receives a list of dictionaries as argument.
         find_specific_book(lst)
         ;return: 0 when the list is empty or the book can't be found.
         """
@@ -54,17 +54,17 @@ class User:
                 bn = book["name"]
                 bs = book["status"]
                 print("ID: {} Name: {} Status: {}".format(bi, bn, bs))
-                break
-            else:
-                print("The book {} was not found in the list of books".format(book_name))
-                return 0
+
+        if i == 0:
+            print("The book {} was not found in the list of books".format(book_name))
+            return 0
 
     def search_by_author(self, book_list):
 
         """
         Search_by_author
         ----------------
-        This module allows the user to look for a book by the author's name
+        This module allows the user to look for a book by author name
         it receives a list of dictionaries as arguments.
         search_by_author(book_list)
         ;return: 0 when the list is empty or the book can't be found.
@@ -83,18 +83,18 @@ class User:
                 bs = book["status"]
                 print("ID: {} Name: {} Status: {}\n".format(bi, bn, bs))
 
-            elif i == 0:
-                print("The author {} has no book in our library\n".format(book_author))
-                return 0
+        if i == 0:
+            print("The author {} has no book in our library\n".format(book_author))
+            return 0
 
     def search_for_book(self, book_list):
 
         """
         Search_for_book
         ---------------
-        This method lists all books that match one pattern of the search’s
+        This method lists all books that match one pattern of the research’s
         sentence.
-        it receives as argument a list of dictionaries.
+        it receives as argument a list of dictionanries.
         ;return: 0 when the list is empty or no book was found.
         """
 
@@ -104,10 +104,10 @@ class User:
         i = 0
         book_name = input("Tell us some elements of the book's title: ").upper()
 
-        # to  analyze the user input
+        # tokenaize the user input
         book_name = book_name.split(" ")
 
-        # remove unnecessary words
+        # remove unnecessary worlds
         unnecessary_words = ["IN", "AT", "THE", "OR", "FOR", "THERE"]
         book_name = [book for book in book_name if book not in unnecessary_words]
 
@@ -122,13 +122,13 @@ class User:
                     print("ID: {} Name: {} Status: {}".format(bi, bn, bs))
 
         if i == 0:
-            print("The book {} was not found in the list of books".format(book_name))
+            print("The book {} was not found in the list of books".format(book_author))
             return 0
 
 
 # test init
 user = User("d", 1, "d.murairi")
-print("{}, {}, {}".format(user.name, user.password, user.email))
+print("{}, {}, {}".format(user.name, user.id, user.email))
 
 # see all books
 books = [{"name": "PYTHON", "id": "1", "status": "BORROWED", "author": "DIRAC"},
