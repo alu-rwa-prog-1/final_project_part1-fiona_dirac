@@ -26,7 +26,7 @@ class Student(User):
                 if student["extended"] == 0:
                     if student["month"] in [1, 3, 5, 7, 8, 10, 12]:
                         if student["day"] > 17 and student["month"] != 7:
-                            student["day"] = stuent["day"] + 14 - 31
+                            student["day"] = student["day"] + 14 - 31
                         elif student["day"] > 17 and student["month"] == 7:
                             student["day"] = student["day"] + 14 - 31
                         else:

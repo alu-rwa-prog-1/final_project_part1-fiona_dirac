@@ -4,10 +4,10 @@
 
 class User:
 
-    def __init__(self, name, email, passworld):
+    def __init__(self, name, email, password):
         self.name = name
         self.email = email
-        self.passworld = passworld
+        self.password = password
 
     def see_all_book(self, book_list):
 
@@ -94,7 +94,7 @@ class User:
         ---------------
         This method lists all books that match one pattern of the research’s
         sentence.
-        it receives as argument a list of dictionanries.
+        it receives as argument a list of dictionaries.
         ;return: 0 when the list is empty or no book was found.
         """
 
@@ -104,7 +104,7 @@ class User:
         i = 0
         book_name = input("Tell us some elements of the book's title: ").upper()
 
-        # tokenaize the user input
+        # to analyze the user input
         book_name = book_name.split(" ")
 
         # remove unnecessary worlds
@@ -122,13 +122,13 @@ class User:
                     print("ID: {} Name: {} Status: {}".format(bi, bn, bs))
 
         if i == 0:
-            print("The book {} was not found in the list of books".format(book_author))
+            print("The book {} was not found in the list of books".format(book_name))
             return 0
 
 
 # test init
 user = User("d", 1, "d.murairi")
-print("{}, {}, {}".format(user.name, user.id, user.email))
+print("{}, {}, {}".format(user.name, user.password, user.email))
 
 # see all books
 books = [{"name": "PYTHON", "id": "1", "status": "BORROWED", "author": "DIRAC"},
