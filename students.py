@@ -1,44 +1,69 @@
 # Author: Fiona Nganga and Dirac Murairi
 # this is the students file
 from users_class import User
+import datetime
 
+day = datetime.datetime.now().strftime("%d")
+month = datetime.datetime.now().month
 
 class Student(User):
-    def __init__(self):
-        self.borrower_name = 0
-        self.book_liked = 0
-        self.borrowed_books = {}
-        self.books_in_possession = []
+    def __init__(self, name, mail, passworld, id, faculty, year):
+        super().__init__(self, name, email, passworld)
+        self.faculty = faculty
+        self.id = id
+        self.year = year
         self.penalty = 0
-        super().__init__(self, name, id, email)
-        print("=" * 50)
-        print("Welcome to the ALU Library Management System!!!!\n"
-              "What would you like to do today?\n"
-              "If you are using our system for the first time please register as a new user\n"
-              "If you are a registered user please choose the login option\n"
-              "Press 1: To Borrow a book\n"
-              "Press 2: To Extend borrowing time\n")
-        print("=" * 50)
 
-    def borrow_book(self, book_collection):
-        print("The current books in the library are: ")
-        for p in book_collection:
-            print(p)
-        borrower_name = input("Please enter your email address: ").lower()
-        self.borrower_name = borrower_name
-        book_liked = input("Please enter the book you'd like to borrow: ")
-        self.book_liked = book_liked
-        for v in book_collection:
-            if v["name"] == book_liked:
-                print("Book is available in the collection")
+    def borrow_book(self, book_collection, borrowed_books):
+        i = 0              #number of books in possession
+        j = 0              #number of book the user can borrow
+
+        # check penalty
+        if self.penalty == 0:
+            for student in borrowed_books:
+                if self.name == student["name"]:
+                    i += 1
+                    print("{} is already in possession of {} with ID: {}".format(self.name, student["book"], student["id"]))
+            if i > 2:
+                print("Sorry, You have more than 2 books")
+                return 0
             else:
-                print("Sorry that book is not in our collection, please try again from our collection")
-        if len(self.books_in_possession) < 3 and self.penalty == 0:
-            print("You can borrow a book")
-            if self.book_liked not in self.borrowed_books.keys():
-                self.borrowed_books.update({self.book_liked: borrower_name})
-                print("The book is available,you can borrow it! ")
-                print("You have the book for 2 weeks till you have to return it")
-                self.books_in_possession.append(self.book_liked)
+                print("You can only take {} books or less".format(3 - i))
+        else:
+            print("You have {} as penalty you need to pay before to take a book".format(self.penalty))
+
+        # check the number of book the user want to borrow
+        int z = 0  #check the number of tries someone make or the number of actions
+        while True:
+            j = int(input("How many book do you want to borrow: "))
+            if 3 - i < j:
+                if z == 1:
+                    print("Sorry, You have entered an incorecte number twice")
+                    return 0
+                print("You can only borrow {} book(s) or less. Try again".format(3 - i))
+                z += 1
             else:
-                print("Sorry, the book has been borrowed, try borrowing a different book")
+                z = 0
+                break
+
+        #borrow book
+        while (z < j):
+            i = 0
+            book_name = input("Please enter the book you'd like to borrow: ").upper()
+            for book in book_collection:
+                if book["name"] == book_name:
+                    if book["status"] == "NOT BORROWED":
+                        print("=" * 50)
+                        print("Book is available in the collection")
+                        book["status"] = "BORROWED"
+                        new  = {"borrowed_name" : self.name, "mail" : self.mail,
+                        "book_name": book_name, "month" : month, "Day" : day,
+                        "extended" : 0}
+                        borrowed_book.append(new)
+                        i += 1
+                        print("You have successfully borrowed this book")
+                        print("=" * 50)
+            if i == 0:
+                print("Sorry the book {} is not in our collection".format(book_name))
+
+            z += 1

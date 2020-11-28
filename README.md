@@ -12,7 +12,7 @@ The project will mainly use Python programming language
 ## MODULE
 ```
 
-date and time [built in method]
+date and time [built in library]
 
 ```
 ## FILES
@@ -23,7 +23,7 @@ date and time [built in method]
 * supervisor_class.py
 * main.py
 
-## AUTHOR
+## AUTHORS
 
 * FIONA NGANGA
 * DIRAC MURAIRI
