@@ -1,4 +1,4 @@
-# Author:
+# Author: Fiona Nganga and Dirac Murairi
 # This file has the main program flow
 def menu():
     print("=" * 50)

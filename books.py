@@ -1,4 +1,4 @@
-# Author:
+# Author: Fiona Nganga and Dirac Murairi
 # this is a file for books in the library
 # we create a list for all books and dictionaries with individual book details
 books = list()

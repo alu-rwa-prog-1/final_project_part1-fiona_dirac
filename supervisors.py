@@ -1,4 +1,4 @@
-# Author:
+# Author:  Fiona Nganga and Dirac Murairi
 # this is the supervisors file
 
 print("=" * 50)
