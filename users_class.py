@@ -24,7 +24,10 @@ class User:
             print("There are no books available.")
             return 0
         for book in book_list:
-            print("ID: {} Name: {} Status: {}".format(book.id, book.name, book.status))
+            bi = book["id"]
+            bn = book["name"]
+            bs = book["status"]
+            print("ID: {} Name: {} Status: {}".format(bi, bn, bs))
 
     def find_specific_book(self, book_list):
 
@@ -38,16 +41,19 @@ class User:
         ;return: 0 when the list is empty or the book can't be found.
         """
 
-        if len(book_lst) == 0:
+        if len(book_list) == 0:
             print("There are no books available.")
             return 0
         i = 0
         book_name = input("Tell us the name of the book: ").upper()
 
         for book in book_list:
-            if book_name == book.name:
+            if book_name == book["name"]:
                 i += 1
-                print("ID: {} Name: {} Status: {}".format(book.id, book.name, book.status))
+                bi = book["id"]
+                bn = book["name"]
+                bs = book["status"]
+                print("ID: {} Name: {} Status: {}".format(bi, bn, bs))
 
         if i == 0:
             print("The book {} was not found in the list of books".format(book_name))
@@ -63,23 +69,22 @@ class User:
         search_by_author(book_list)
         ;return: 0 when the list is empty or the book can't be found.
         """
-        if len(book_lst) == 0:
+        if len(book_list) == 0:
             print("There are no books available.")
             return 0
         i = 0
         book_author = input("Tell us the name of the author: ").upper()
 
         for book in book_list:
-            if book_author == book.author:
+            if book_author == book["author"]:
                 i += 1
-                bi = book.id
-                bn = book.name
-                bc = book.category
-                bs = book.status
-                print("ID: {} Name: {} Category: {} Status: {}".format(bi, bn, bc, bs))
+                bi = book["id"]
+                bn = book["name"]
+                bs = book["status"]
+                print("ID: {} Name: {} Status: {}\n".format(bi, bn, bs))
 
         if i == 0:
-            print("The book {} was not found in the list of books".format(book_author))
+            print("The author {} has no book in our library\n".format(book_author))
             return 0
 
 
@@ -94,7 +99,7 @@ class User:
         ;return: 0 when the list is empty or no book was found.
         """
 
-        if len(book_lst) == 0:
+        if len(book_list) == 0:
             print("There are no books available.")
             return 0
         i = 0
@@ -105,19 +110,39 @@ class User:
 
         #remove unnecessary worlds
         unnecessary_words = ["IN", "AT", "THE", "OR", "FOR", "THERE"]
-        book_name = [book for book not in unnecessary_words]
+        book_name = [book for book in book_name if book not in unnecessary_words]
 
         #Find those books
         for pattern in book_name:
             for book in book_list:
-                if pattern in book.name:
+                if pattern in book["name"]:
                     i += 1
-                    bi = book.id
-                    bn = book.name
-                    bc = book.category
-                    bs = book.status
-                    print("ID: {} Name: {} Category: {} Status: {}".format(bi, bn, bc, bs))
+                    bi = book["id"]
+                    bn = book["name"]
+                    bs = book["status"]
+                    print("ID: {} Name: {} Status: {}".format(bi, bn, bs))
 
         if i == 0:
             print("The book {} was not found in the list of books".format(book_author))
             return 0
+
+#test init
+user =User("d", 1, "d.murairi")
+print("{}, {}, {}".format(user.name, user.id, user.email))
+
+#see all books
+books = [{"name": "PYTHON", "id" : "1", "status" : "BORROWED", "author" : "DIRAC"},
+{"name": "JAVA", "id" : "2", "status" : "NOT BORROWED", "author" : "ACHILLE"},
+{"name": "PYTHON FOR EVERYBODY", "id" : "3", "status" : "NOT BORROWED", "author" : "FIONA"},
+{"name": "C++", "id" : "4", "status" : "NOT BORROWED", "author" : "FIONA"},
+{"name": "MFC", "id" : "5", "status" : "NOT BORROWED", "author" : "ACHILLE"},
+{"name": "HARRY POTTER", "id" : "6", "status" : "BORROWED", "author" : "DIRAC"},
+{"name": "PYTHON THE NORMAL WAY", "id" : "7", "status" : "BORROWED", "author" : "DIRAC"}]
+user.see_all_book(books)
+
+user.find_specific_book([])
+user.find_specific_book(books)
+user.search_by_author([])
+user.search_by_author(books)
+user.search_for_book([])
+user.search_for_book(books)
