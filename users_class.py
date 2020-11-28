@@ -1,3 +1,123 @@
-# Author:
+# Author: Fiona Nganga and Dirac Murairi
 # this is a file for the users
 # class Users:
+
+class User:
+
+    def __init__(self, name, id, email):
+        self.name = name
+        self.id = id
+        self.email = email
+
+    def see_all_book(self, book_list):
+
+        """
+        see_all_book
+        ------------
+        This method helps the user to list all books
+        that the library has and display if it’s borrowed or not.
+        it receive as the first argument a list of dictionaries.
+        see_all_book (list)
+        ;return: 0 when the list is empty.
+        """
+        if len(book_list) == 0:
+            print("There are no books available.")
+            return 0
+        for book in book_list:
+            print("ID: {} Name: {} Status: {}".format(book.id, book.name, book.status))
+
+    def find_specific_book(self, book_list):
+
+        """
+        Find_specific_book
+        ------------------
+        This method helps the user to list a specific
+        book using the name of the book given.
+        it receives a list of dictionaries as argument.
+        find_specific_book(lst)
+        ;return: 0 when the list is empty or the book can't be found.
+        """
+
+        if len(book_lst) == 0:
+            print("There are no books available.")
+            return 0
+        i = 0
+        book_name = input("Tell us the name of the book: ").upper()
+
+        for book in book_list:
+            if book_name == book.name:
+                i += 1
+                print("ID: {} Name: {} Status: {}".format(book.id, book.name, book.status))
+
+        if i == 0:
+            print("The book {} was not found in the list of books".format(book_name))
+            return 0
+
+    def search_by_author(self, book_list):
+
+        """
+        Search_by_author
+        ----------------
+        This module allows the user to look for a book by author name
+        it receives a list of dictionaries as arguments.
+        search_by_author(book_list)
+        ;return: 0 when the list is empty or the book can't be found.
+        """
+        if len(book_lst) == 0:
+            print("There are no books available.")
+            return 0
+        i = 0
+        book_author = input("Tell us the name of the author: ").upper()
+
+        for book in book_list:
+            if book_author == book.author:
+                i += 1
+                bi = book.id
+                bn = book.name
+                bc = book.category
+                bs = book.status
+                print("ID: {} Name: {} Category: {} Status: {}".format(bi, bn, bc, bs))
+
+        if i == 0:
+            print("The book {} was not found in the list of books".format(book_author))
+            return 0
+
+
+    def search_for_book(self, book_list):
+
+        """
+        Search_for_book
+        ---------------
+        This method lists all books that match one pattern of the research’s
+        sentence.
+        it receives as argument a list of dictionanries.
+        ;return: 0 when the list is empty or no book was found.
+        """
+
+        if len(book_lst) == 0:
+            print("There are no books available.")
+            return 0
+        i = 0
+        book_name = input("Tell us some elements of the book's title: ").upper()
+
+        #tokenaize the user input
+        book_name = book_name.split(" ")
+
+        #remove unnecessary worlds
+        unnecessary_words = ["IN", "AT", "THE", "OR", "FOR", "THERE"]
+        book_name = [book for book not in unnecessary_words]
+
+        #Find those books
+        for pattern in book_name:
+            for book in book_list:
+                if pattern in book.name:
+                    i += 1
+                    bi = book.id
+                    bn = book.name
+                    bc = book.category
+                    bs = book.status
+                    print("ID: {} Name: {} Category: {} Status: {}".format(bi, bn, bc, bs))
+
+        if i == 0:
+            print("The book {} was not found in the list of books".format(book_author))
+            return 0
