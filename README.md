@@ -8,11 +8,22 @@ The project will mainly use Python programming language
 
 ## FUTURES
 
+* enable students to easily borrow, return and access books in the library
+* enable facilitators to easily borrow, return and access books in the library(can do so in mass quantities if necessary
+for a lecture)
+* enable the librarian to be able to add and remove books to the collection
+* enable users to browse through the library for books they are interested in
+* enable users to register/login into the system
+* enable the presence of both online and physical resources
+* some other futures related to other one :
+  - extend deadline for returning a book.
 
 ## MODULE
+
 ```
 
-date and time [built in library]
+datetime [built in library]
+calendar [built in library]
 
 ```
 ## FILES
@@ -22,6 +33,10 @@ date and time [built in library]
 * facilitator_class.py
 * supervisor_class.py
 * main.py
+
+## Time line
+
+- The project will run for the next 4 weeks : 2020-11-22 : 2020-12-18
 
 ## AUTHORS
 

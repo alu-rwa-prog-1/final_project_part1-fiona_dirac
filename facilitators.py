@@ -3,6 +3,7 @@
 
 from users_class import User
 import datetime
+import calendar
 
 day = datetime.datetime.now().strftime("%d")
 month = datetime.datetime.now().month
@@ -17,35 +18,65 @@ class Facilitator(User):
         self.penalty = 0
 
 
-    def update_date(self, facilitator):
+    def update_date(self, student):
         """
-
+        update_date
+        -----------
+        This method update the date accordingly to the number of days in a month.
+        it recieves as arguments a dictionary.
+        update_date(dictionary)
+        ;return:nothing
         """
-        if facilitator["return_month"] in [1, 3, 5, 7, 8, 10, 12]:
-            if facilitator["return_day"] > 17 and facilitator["return_month"] != 7:
-                facilitator["return_day"] = facilitator["return_day"] + 14 - 31
+#The naming will be fixed in the next submission. we keep student for the moment.
+        #for months those have 31 days
+        if student["return_month"] in [1, 3, 5, 7, 8, 10, 12]:
+            if student["return_day"] > 17:
+                student["return_day"] = student["return_day"] + 14 - 31
 
-                if facilitator["return_month"] != 12:
-                    facilitator["return_month"] += 1
+                if student["return_month"] != 12:
+                    student["return_month"] += 1
                 else:
-                    facilitator["return_month"] = 1
+                    student["return_month"] = 1
 
             else:
-                facilitator["return_day"] += 14
+                student["return_day"] += 14
 
+        #for months those have 30 days and february
         else:
-            if facilitator["return_day"] > 16:
-                facilitator["return_day"] = facilitator["return_day"] + 14 - 30
+            if student["return_month"] != 2:
+                if student["return_day"] > 16:
+                    student["return_day"] = student["return_day"] + 14 - 30
 
-                facilitator["return_month"] += 1
-
+                    student["return_month"] += 1
+                else:
+                    student["return_day"] += 14
             else:
-                facilitator["return_day"] += 14
+                #366 days in a year where fabruary has 29 days
+                if calendar.isleap(year):
+                    if student["return_day"] > 15:
+                        student["return_day"] = student["return_day"] + 14 - 29
+
+                        student["return_month"] += 1
+                    else:
+                        student["return_day"] += 14
+                #365 days in a year where fabruary has 28 days
+                else:
+                    if student["return_day"] > 14:
+                        student["return_day"] = student["return_day"] + 14 - 28
+
+                        student["return_month"] += 1
+                    else:
+                        student["return_day"] += 14
 
     def extend_borrowing(self, borrowed_books):
 
         """
-
+        extend_borrowing
+        ----------------
+        Thismethod allows the user to extend to 14 days the time he had borrowed a book.
+        it recieves as argument a list of dictionaries holding informations about book_borrowed.
+        extend_borrowing(borrowed_books)
+        ;return: nothing
         """
         book_name = input("Please enter the book you'd like to borrow: ").upper()
         for facilitator in borrowed_books:
@@ -53,6 +84,7 @@ class Facilitator(User):
                 if facilitator["extended"] < 2:
                     self.update_date(facilitator)
                     facilitator["extended"] += 1
+                    print("You have successfully extended your deadline")
                 else:
                     print("Sorry, You have already extended your deadline")
                     print("You are expected to bring the book on {}/{}".format(facilitator["return_day"], facilitator["return_month"]))
@@ -60,6 +92,19 @@ class Facilitator(User):
                 print("Sorry, You need to borrow that book in our library")
 
     def borrow_book(self, book_collection, borrowed_books):
+
+        """
+        borrowed_books
+        --------------
+        This method allows a student to borrow a certain number of books
+        less than 3 from the library.
+        It adds the books borrowed to the list of books in people’s possession.
+        it recieves as argument a list of dictionaries holding informations about book_collection.
+        it recieves as argument a list of dictionaries holding informations about book_borrowed.
+        borrow_book(book_collection, borrowed_books)
+        ;return: 0 when there is an error.
+        """
+
         i = 0  # number of books in possession
         j = 0  # number of book the user can borrow
 
