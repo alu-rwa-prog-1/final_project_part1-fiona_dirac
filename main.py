@@ -1,5 +1,12 @@
 # Author: Fiona Nganga and Dirac Murairi
 # This file has the main program flow
+from students import Student
+# from facilitators import Facilitator
+from users_class import User
+
+
+# from supervisors import Supervisor
+
 def menu():
     print("=" * 50)
     print("Welcome to the ALU Library Management System!!!!\n"
@@ -11,6 +18,17 @@ def menu():
           "Press 3: To Log out\n ")
     print("=" * 50)
 
+
+# we create the list of all the books we have in our library
+books = [{"name": "PYTHON", "id": "1", "status": "BORROWED", "author": "DIRAC"},
+         {"name": "JAVA", "id": "2", "status": "NOT BORROWED", "author": "ACHILLE"},
+         {"name": "PYTHON FOR EVERYBODY", "id": "3", "status": "NOT BORROWED", "author": "FIONA"},
+         {"name": "C++", "id": "4", "status": "NOT BORROWED", "author": "FIONA"},
+         {"name": "MFC", "id": "5", "status": "NOT BORROWED", "author": "ACHILLE"},
+         {"name": "HARRY POTTER", "id": "6", "status": "BORROWED", "author": "DIRAC"},
+         {"name": "PYTHON THE NORMAL WAY", "id": "7", "status": "BORROWED", "author": "DIRAC"}]
+# we create a list to hold borrowed books and their details
+borrowed_books = list()
 
 # we need to create a list for all the users in different categories and initialize with a few users
 # this one belongs to the students
@@ -81,17 +99,34 @@ def register_supervisor():
     print("You have successfully registered as a new supervisor! You're welcome to administrator the "
           "library's resources!")
 
+
 # method to display all books to users
 # def display_books(book_collection):
 #     print("All the available books are: ")
 #     for b in book_collection:
 #         print(b)
-
+# alu_students = Student()
+# alu_facilitators = Facilitator()
 
 type = True
 while type:
     menu()
     option = input("What would you like to do today? ").lower()
+    if option == "1" or option == "one":
+        print('Press 1: If you are a student\n'
+              'Press 2: If you are a facilitator\n'
+              'Press 3: If you are a supervisor')
+        choice = input("What are you in the options above? Please type the number representing your category: ").lower()
+        if choice == "1" or choice == "one":
+            alu_students = Student()
+            print("What would you like to do today?\n"
+                  "Press 1: To Borrow a book\n"
+                  "Press 2: To extend the time you have borrowed for a certain book")
+            pick = input("What would you like to do today? ")
+            if pick == "1" or "one":
+                alu_students.borrow_book(books, borrowed_books)
+            elif pick == "2" or "two":
+                alu_students.extend_borrowing(borrowed_books)
     if option == "2" or option == "two":
         print('Press 1: If you are registering as a student\n'
               'Press 2: If you are registering as a facilitator\n'
@@ -103,6 +138,8 @@ while type:
             register_facilitator()
         elif option2 == "3" or option2 == "three":
             register_supervisor()
-        type = False
+    if option == "3" or "three":
+        print("Thank you")
+        break
     # elif option == "1" or option == "one":
     # elif option == "3" or option == "three":

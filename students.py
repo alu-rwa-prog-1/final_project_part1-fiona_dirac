@@ -8,11 +8,11 @@ month = datetime.datetime.now().month
 
 
 class Student(User):
-    def __init__(self, name, mail, password, id, faculty, year):
-        super().__init__(self, name, email, password)
-        self.faculty = faculty
+    def __init__(self):
+        super().__init__()
+        self.faculty = input("What is your Faculty? ")
         self.id = id
-        self.year = year
+        self.year = input("What year are you in?")
         self.penalty = 0
 
     def extend_borrowing(self, borrowed_books):
@@ -86,10 +86,10 @@ class Student(User):
                         print("=" * 50)
                         print("Book is available in the collection")
                         book["status"] = "BORROWED"
-                        new = {"borrowed_name": self.name, "mail": self.mail,
+                        new = {"borrowed_name": self.name, "mail": self.email,
                                "book_name": book_name, "month": month, "Day": day,
                                "extended": 0}
-                        borrowed_book.append(new)
+                        borrowed_books.append(new)
                         i += 1
                         print("You have successfully borrowed this book")
                         print("=" * 50)

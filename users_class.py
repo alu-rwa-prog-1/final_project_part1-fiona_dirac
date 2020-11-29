@@ -4,10 +4,10 @@
 
 class User:
 
-    def __init__(self, name, email, password):
-        self.name = name
-        self.email = email
-        self.password = password
+    def __init__(self):
+        self.name = input("What is your name? ")
+        self.email = input("What is your email? ")
+        self.password = input("What is your password? ")
 
     def see_all_book(self, book_list):
 
@@ -125,24 +125,24 @@ class User:
             print("The book {} was not found in the list of books".format(book_name))
             return 0
 
-
-# test init
-user = User("d", 1, "d.murairi")
-print("{}, {}, {}".format(user.name, user.password, user.email))
-
-# see all books
-books = [{"name": "PYTHON", "id": "1", "status": "BORROWED", "author": "DIRAC"},
-         {"name": "JAVA", "id": "2", "status": "NOT BORROWED", "author": "ACHILLE"},
-         {"name": "PYTHON FOR EVERYBODY", "id": "3", "status": "NOT BORROWED", "author": "FIONA"},
-         {"name": "C++", "id": "4", "status": "NOT BORROWED", "author": "FIONA"},
-         {"name": "MFC", "id": "5", "status": "NOT BORROWED", "author": "ACHILLE"},
-         {"name": "HARRY POTTER", "id": "6", "status": "BORROWED", "author": "DIRAC"},
-         {"name": "PYTHON THE NORMAL WAY", "id": "7", "status": "BORROWED", "author": "DIRAC"}]
-user.see_all_book(books)
-
-user.find_specific_book([])
-user.find_specific_book(books)
-user.search_by_author([])
-user.search_by_author(books)
-user.search_for_book([])
-user.search_for_book(books)
+#
+# # test init
+# user = User("d", 1, "d.murairi")
+# print("{}, {}, {}".format(user.name, user.password, user.email))
+#
+# # see all books
+# books = [{"name": "PYTHON", "id": "1", "status": "BORROWED", "author": "DIRAC"},
+#          {"name": "JAVA", "id": "2", "status": "NOT BORROWED", "author": "ACHILLE"},
+#          {"name": "PYTHON FOR EVERYBODY", "id": "3", "status": "NOT BORROWED", "author": "FIONA"},
+#          {"name": "C++", "id": "4", "status": "NOT BORROWED", "author": "FIONA"},
+#          {"name": "MFC", "id": "5", "status": "NOT BORROWED", "author": "ACHILLE"},
+#          {"name": "HARRY POTTER", "id": "6", "status": "BORROWED", "author": "DIRAC"},
+#          {"name": "PYTHON THE NORMAL WAY", "id": "7", "status": "BORROWED", "author": "DIRAC"}]
+# user.see_all_book(books)
+#
+# user.find_specific_book([])
+# user.find_specific_book(books)
+# user.search_by_author([])
+# user.search_by_author(books)
+# user.search_for_book([])
+# user.search_for_book(books)
