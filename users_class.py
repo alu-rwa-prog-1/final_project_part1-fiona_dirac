@@ -3,6 +3,16 @@
 # class Users:
 
 class User:
+    """
+           User
+           ---------
+           The user is a user of the library.
+           The student can:
+               -   See all books
+               -   Find specific books
+               -   Search a book by its author
+               -   Search for a book
+           """
 
     def __init__(self, name, email, id):
         self.name = name
@@ -132,6 +142,8 @@ class User:
 # print("{}, {}, {}".format(user.name, user.password, user.email))
 #
 # # see all books
+
+
 books = [{"name": "PYTHON", "id": "1", "status": "BORROWED", "author": "DIRAC"},
          {"name": "JAVA", "id": "2", "status": "NOT BORROWED", "author": "ACHILLE"},
          {"name": "PYTHON FOR EVERYBODY", "id": "3", "status": "NOT BORROWED", "author": "FIONA"},

@@ -11,7 +11,19 @@ month = int(month)
 year = datetime.datetime.now().year
 year = int(year)
 
+# this is the class for the students
+
+
 class Student(User):
+    """
+        Student
+        ---------
+        The student is a user of the library.
+        The student can:
+            -   Borrow a book
+            -   Extend Borrowing time for a book
+        """
+
     def __init__(self, name, email, id, faculty, year):
         super().__init__(name, email, id)
         self.faculty = faculty
@@ -28,7 +40,7 @@ class Student(User):
         ;return:nothing
         """
 
-        #for months those have 31 days
+        # for months those have 31 days
         if student["return_month"] in [1, 3, 5, 7, 8, 10, 12]:
             if student["return_day"] > 17:
                 student["return_day"] = student["return_day"] + 14 - 31
@@ -41,7 +53,7 @@ class Student(User):
             else:
                 student["return_day"] += 14
 
-        #for months those have 30 days and february
+        # for months those have 30 days and february
         else:
             if student["return_month"] != 2:
                 if student["return_day"] > 16:
@@ -51,7 +63,7 @@ class Student(User):
                 else:
                     student["return_day"] += 14
             else:
-                #366 days in a year where fabruary has 29 days
+                # 366 days in a year where fabruary has 29 days
                 if calendar.isleap(year):
                     if student["return_day"] > 15:
                         student["return_day"] = student["return_day"] + 14 - 29
@@ -59,7 +71,7 @@ class Student(User):
                         student["return_month"] += 1
                     else:
                         student["return_day"] += 14
-                #365 days in a year where fabruary has 28 days
+                # 365 days in a year where fabruary has 28 days
                 else:
                     if student["return_day"] > 14:
                         student["return_day"] = student["return_day"] + 14 - 28
@@ -67,7 +79,6 @@ class Student(User):
                         student["return_month"] += 1
                     else:
                         student["return_day"] += 14
-
 
     def extend_borrowing(self, borrowed_books):
 
@@ -88,7 +99,8 @@ class Student(User):
                     print("You have successfully extended your deadline")
                 else:
                     print("Sorry, You have already extended your deadline")
-                    print("You are expected to bring the book on {}/{}".format(student["return_day"], student["return_month"]))
+                    print("You are expected to bring the book on {}/{}".format(student["return_day"],
+                                                                               student["return_month"]))
             else:
                 print("Sorry, You need to borrow that book in our library")
 
@@ -152,7 +164,7 @@ class Student(User):
                         book["status"] = "BORROWED"
                         new = {"name": self.name, "mail": self.email,
                                "book_name": book_name, "book_id": book["id"],
-                               "month": month, "day": day, "return_day" : day,
+                               "month": month, "day": day, "return_day": day,
                                "return_month": month, "extended": 0}
                         self.update_date(new)
                         borrowed_books.append(new)
