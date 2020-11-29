@@ -85,7 +85,11 @@ class Student(User):
                 if student["extended"] == 0:
                     self.update_date(student)
                     student["extended"] += 1
+<<<<<<< HEAD
                     print("You have successfully extended your deadline")
+=======
+                    # message
+>>>>>>> 274f9fac69b0ba275b57e0c80c2e5e7cfb51a950
                 else:
                     print("Sorry, You have already extended your deadline")
                     print("You are expected to bring the book on {}/{}".format(student["return_day"], student["return_month"]))
@@ -107,7 +111,7 @@ class Student(User):
         """
         i = 0  # number of books in possession
         j = 0  # number of book the user can borrow
-        #print all Books
+        # print all Books
         for book in book_collection:
             print("Book name: {} status: {}".format(book["name"], book["status"]))
         # check penalty
@@ -115,7 +119,7 @@ class Student(User):
             for student in borrowed_books:
                 if self.name == student["name"]:
                     i += 1
-                    print("{} is already in possession of {} with ID: {}".format(self.name, student["book"],
+                    print("{} is already in possession of {} with ID: {}".format(self.name, student["book_name"],
                                                                                  student["book_id"]))
             if i > 2:
                 print("Sorry, You already have 3 books into possession")
@@ -170,7 +174,7 @@ class Student(User):
 student1 = Student("Fiona", "f.nganga@alustudent.com", 2, "CS", "2020")
 print(student1.name)
 
-#borrowing book
+# borrowing book
 
 lst_b = []
 books = [{"name": "PYTHON", "id": "1", "status": "BORROWED", "author": "DIRAC"},
