@@ -27,6 +27,15 @@ class TestStudent(unittest.TestCase):
             if x["book_name"] == "java":
                 assert x["extended"] == 1
 
+    @mock.patch("students.input", create=True)
+    def test_init_borrow_more_books(self, mocked_input):
+        student = Student("Fiona", "f.nganga@alustudent.com", "2020", "CS", 2)
+        mocked_input.side_effect = [2, "java", "mfc"]
+        student.borrow_book(books, lst_b)
+        
+
+
+
 
 if __name__ == "__main__":
     unittest.main()
