@@ -5,6 +5,7 @@
 from students import *
 import unittest
 from unittest import mock
+import pytest
 
 
 class TestStudent(unittest.TestCase):
@@ -26,6 +27,16 @@ class TestStudent(unittest.TestCase):
         for x in lst_b:
             if x["book_name"] == "java":
                 assert x["extended"] == 1
+
+    def test_init_change_password(self):  # this method checks whether we can change the user's details
+        student = Student("Fiona", "f.nganga@alustudent.com", "2020", "CS", 2)
+        new_id = "2023"
+        self.password = new_id
+        print(student.id)
+        self.assertEqual(new_id, self.password)
+
+
+
 
 
 
