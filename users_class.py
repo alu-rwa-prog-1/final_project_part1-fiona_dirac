@@ -4,7 +4,7 @@
 
 class User:
 
-    def __init__(self, name, id):
+    def __init__(self, name, email, id):
         self.name = name
         self.email = email
         self.id = id

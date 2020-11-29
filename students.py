@@ -9,8 +9,8 @@ day = int(day)
 month = int(month)
 
 class Student(User):
-    def __init__(self, name, id, email, faculty, year):
-        super().__init__(name, id, email)
+    def __init__(self, name, email, id, faculty, year):
+        super().__init__(name, email, id)
         self.faculty = faculty
         self.year = year
         self.penalty = 0

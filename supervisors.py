@@ -9,8 +9,8 @@ from facilitators import Facilitator
 class Supervisor(User):
     """docstring forSupervisor."""
 
-    def __init__(self, name, id, email):
-        super().__init__(name, id, email)
+    def __init__(self, name, email, id):
+        super().__init__(name, email, id)
 
     def add_book(self, book_list):
         name = input("Enter the name of the book: ").upper()
