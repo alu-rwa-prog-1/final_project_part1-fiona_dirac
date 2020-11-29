@@ -72,7 +72,7 @@ class Student(User):
                 if self.name == student["name"]:
                     i += 1
                     print("{} is already in possession of {} with ID: {}".format(self.name, student["book"],
-                                                                                 student["id"]))
+                                                                                 student["book_id"]))
             if i > 2:
                 print("Sorry, You already have 3 books into possession")
                 return 0
@@ -107,8 +107,9 @@ class Student(User):
                         print("Book is available in the collection")
                         book["status"] = "BORROWED"
                         new = {"name": self.name, "mail": self.email,
-                               "book_name": book_name, "month": month, "day": day,
-                               "return_day" : day, "return_month": month, "extended": 0}
+                               "book_name": book_name, "book_id": book["id"],
+                               "month": month, "day": day, "return_day" : day,
+                               "return_month": month, "extended": 0}
                         self.update_date(new)
                         borrowed_books.append(new)
                         i += 1
@@ -121,7 +122,7 @@ class Student(User):
 
             z += 1
 
-student1 = Student()
+student1 = Student("Kwame", "kwame", "001", "CS", 2023)
 print(student1.name)
 
 #borrowing book
