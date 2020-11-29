@@ -119,6 +119,14 @@ while type:
         choice = input("What are you in the options above? Please type the number representing your category: ").lower()
         if choice == "1" or choice == "one":
             alu_students = Student()
+            mail = input("Kindly input your email once again: ")
+            for student in students_library:
+                if student.get("email_address") == mail:
+                    print("You are registered in our system!")
+                    break
+                else:
+                    print("Sorry,you are not registered in our system, please try registering")
+                    quit()
             print("What would you like to do today?\n"
                   "Press 1: To Borrow a book\n"
                   "Press 2: To extend the time you have borrowed for a certain book")
