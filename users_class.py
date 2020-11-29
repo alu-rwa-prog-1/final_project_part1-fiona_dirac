@@ -4,10 +4,10 @@
 
 class User:
 
-    def __init__(self):
-        self.name = input("What is your name? ")
-        self.email = input("What is your email? ")
-        self.password = input("What is your password? ")
+    def __init__(self, name, id):
+        self.name = name
+        self.email = email
+        self.id = id
 
     def see_all_book(self, book_list):
 

@@ -9,19 +9,19 @@ day = int(day)
 month = int(month)
 
 class Student(User):
-    def __init__(self):
-        super().__init__()
-        self.faculty = input("What is your Faculty? ")
-        self.id = id
-        self.year = input("What year are you in?")
+    def __init__(self, name, id, email, faculty, year):
+        super().__init__(name, id, email)
+        self.faculty = faculty
+        self.year = year
         self.penalty = 0
 
     def update_date(self, student):
         """
 
         """
+
         if student["return_month"] in [1, 3, 5, 7, 8, 10, 12]:
-            if student["return_day"] > 17 and student["return_month"] != 7:
+            if student["return_day"] > 17:
                 student["return_day"] = student["return_day"] + 14 - 31
 
                 if student["return_month"] != 12:
@@ -53,6 +53,7 @@ class Student(User):
                 if student["extended"] == 0:
                     self.update_date(student)
                     student["extended"] += 1
+                    #message
                 else:
                     print("Sorry, You have already extended your deadline")
                     print("You are expected to bring the book on {}/{}".format(student["return_day"], student["return_month"]))
@@ -79,6 +80,7 @@ class Student(User):
                 print("{} can borrow {} books or less".format(self.name, 3 - i))
         else:
             print("You have {} as penalty you need to pay before to take a book".format(self.penalty))
+            return 0
 
         # check the number of book the user want to borrow
         z = int(0)  # check the number of tries someone make or the number of actions
@@ -110,7 +112,6 @@ class Student(User):
                         self.update_date(new)
                         borrowed_books.append(new)
                         i += 1
-                        book["status"] = "BORROWED"
                         print("You have successfully borrowed this book")
                         print("=" * 50)
                     else:

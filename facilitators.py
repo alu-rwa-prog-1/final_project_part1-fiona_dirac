@@ -10,12 +10,12 @@ day = int(day)
 month = int(month)
 
 class Facilitator(User):
-    def __init__(self):
-        super().__init__()
-        self.faculty = input("What is your Faculty? ")
-        self.id = id
-        self.year = input("What year are you in?")
+    def __init__(self, name, id, email, faculty, year):
+        super().__init__(name, id, email)
+        self.faculty = faculty
+        self.year = year
         self.penalty = 0
+
 
     def update_date(self, facilitator):
         """
