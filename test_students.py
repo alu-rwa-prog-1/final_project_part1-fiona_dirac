@@ -17,6 +17,13 @@ class TestStudent(unittest.TestCase):
         student.borrow_book(books, lst_b)
         assert len(lst_b) == 2
 
+    # @mock.patch("students.input", create=True)
+    # def test_init_book_borrow_not_existing_book(self, mocked_input):
+    #     student = Student("Fiona", "f.nganga@alustudent.com", "2020", "CS", 2)
+    #     mocked_input.side_effect = [2]
+    #     student.borrow_book(books, lst_b)
+    #     assert len(lst_b) == 0
+
 
 if __name__ == "__main__":
     unittest.main()
