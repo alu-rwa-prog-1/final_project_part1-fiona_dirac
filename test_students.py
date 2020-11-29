@@ -28,12 +28,28 @@ class TestStudent(unittest.TestCase):
             if x["book_name"] == "java":
                 assert x["extended"] == 1
 
-    def test_init_change_password(self):  # this method checks whether we can change the user's details
+    def test_init_change_ID(self):  # this method checks whether we can change the user's ID
         student = Student("Fiona", "f.nganga@alustudent.com", "2020", "CS", 2)
         new_id = "2023"
         self.password = new_id
         print(student.id)
         self.assertEqual(new_id, self.password)
+
+    def test_init_change_email(self):  # this method checks whether we can change the user's email
+        student = Student("Fiona", "f.nganga@alustudent.com", "2020", "CS", 2)
+        new_email = "fionafifs@gmail.com"
+        self.email = new_email
+        print(student.email)
+        self.assertEqual(new_email, self.password)
+
+    @mock.patch("students.input", create=True)
+    def test_init_book_and_try_borrow_for_another_user(self, mocked_input):  # this method tests successful borrowing
+        # of books in our  library which are in the books dictionary, we test the length of our borrowed books to see
+        # if the 2 books we borrow are added there. This tests if a different user can borrow books
+        student = Student("Dirac", "d.murairi@alustudent.com", "1234", "CS", 2)
+        mocked_input.side_effect = [2, "harry potter", "python"]
+        student.borrow_book(books, lst_b)
+        assert len(lst_b) == 2
 
 
 if __name__ == "__main__":
