@@ -17,7 +17,9 @@ class Student(User):
 
     def update_date(self, student):
         """
-
+        update_date
+        -----------
+        
         """
 
         if student["return_month"] in [1, 3, 5, 7, 8, 10, 12]:

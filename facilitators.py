@@ -72,7 +72,7 @@ class Facilitator(User):
                 if self.name == facilitator["name"]:
                     i += 1
                     print("{} is already in possession of {} with ID: {}".format(self.name, facilitator["book"],
-                                                                                 facilitator["id"]))
+                                                                                 facilitator["book_id"]))
             if i > 4:
                 print("Sorry, You already have 5 books into possession")
                 return 0
@@ -106,7 +106,7 @@ class Facilitator(User):
                         print("Book is available in the collection")
                         book["status"] = "BORROWED"
                         new = {"name": self.name, "mail": self.email,
-                               "book_name": book_name, "month": month, "Day": day,
+                               "book_name": book_name, "book_id": book["id"], "month": month, "Day": day,
                                "return_day" : day, "return_month": month, "extended": 0}
                         self.update_date(new)
                         borrowed_books.append(new)

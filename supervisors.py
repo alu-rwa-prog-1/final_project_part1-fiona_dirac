@@ -3,8 +3,7 @@
 
 
 from users_class import User
-from students import Student
-from facilitators import Facilitator
+import datetime
 
 day = datetime.datetime.now().strftime("%d")
 month = datetime.datetime.now().month
@@ -87,7 +86,7 @@ class Supervisor(User):
         name = input("Enter the name of the book to return: ").upper()
         id = input("Enter the id of the book you want to return: ").upper()
         user_name = input("Enter the name of the book's user: ").upper()
-        user_mail = input("Enter the email address of the user: ").upper()
+        user_mail = input("Enter the email address of the user: ").lower()
 
         #get the index of the book in the list of all books
         for book in list_book:
@@ -103,13 +102,13 @@ class Supervisor(User):
 
         #get the index of the book borrowed in the list of all borrowed books
         for book in list_borrowed:
-            if name == book["book_name"] and id == book["id"] and list_users[j]["name"] == book["name"]:
+            if name == book["book_name"] and id == book["book_id"] and list_users[j]["name"] == book["name"]:
                 if day <= book["return_day"] and month <= book["return_month"]:
-                    list_book[a]["status"] == "NOT BORROWED"   #change status of the book
+                    list_book[a]["status"] = "NOT BORROWED"   #change status of the book
                     list_borrowed.pop(i)                        #remove the book from the borrowing list
                     print("The book was successfully returned")
                 else:
-                    list_book[a]["status"] == "NOT BORROWED"   #change status of the book
+                    list_book[a]["status"] = "NOT BORROWED"   #change status of the book
                     list_borrowed.pop(i)                        #remove the book from the borrowing list
                     list_users[j]["penalty"] += 1               #give the user penalty
                     print("The book was returned late and the user is charged 1 more penalty")
@@ -132,7 +131,7 @@ class Supervisor(User):
         """
 
         user_name = input("Enter the name of the book's user: ").upper()
-        user_mail = input("Enter the email address of the user: ").upper()
+        user_mail = input("Enter the email address of the user: ").lowe()
 
         #remove penalties
         for user in list_users:
@@ -160,7 +159,7 @@ class Supervisor(User):
         i = 0               #the index of the user
 
         user_name = input("Enter the name of the book's user: ").upper()
-        user_mail = input("Enter the email address of the user: ").upper()
+        user_mail = input("Enter the email address of the user: ").lower()
 
         for user in list_users:
             if user["name"] == user_name and user["email"] == user_mail:
@@ -169,5 +168,32 @@ class Supervisor(User):
             i += 1
         print("we couldn't find this user")
         return 0
+
 su = Supervisor("kwame", "dirac", "002")
-print(su.name)
+# print(su.name)
+books = [{"name": "PYTHON", "id": "1", "status": "BORROWED", "author": "DIRAC"},
+         {"name": "JAVA", "id": "2", "status": "NOT BORROWED", "author": "ACHILLE"},
+         {"name": "PYTHON FOR EVERYBODY", "id": "3", "status": "NOT BORROWED", "author": "FIONA"},
+         {"name": "C++", "id": "4", "status": "NOT BORROWED", "author": "FIONA"},
+         {"name": "MFC", "id": "5", "status": "NOT BORROWED", "author": "ACHILLE"},
+         {"name": "HARRY POTTER", "id": "6", "status": "BORROWED", "author": "DIRAC"},
+         {"name": "PYTHON THE NORMAL WAY", "id": "7", "status": "BORROWED", "author": "DIRAC"}]
+# su.add_book(books)
+# su.add_book(books)
+# print(books)
+# su.remove_book(books)
+# print(books)
+
+borrowed = [{"name":"DIRAC", "mail": "d.murairi@alustudent.com",
+        "book_name": "PYTHON", "book_id": "1", "month": 21, "Day": 7,
+       "return_day" : 28, "return_month": 11, "extended": 0}]
+
+users = [{"name" : "DIRAC", "email" : "d.murairi@alustudent.com", "id" : "001",
+            "year" : 2020, "penalty" : 0, "faculty" : "CS"}]
+su.return_book(books, borrowed, users)
+print(books)
+print("====")
+print(borrowed)
+print("====")
+print(users)
+print("====")
