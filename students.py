@@ -173,6 +173,7 @@ print(student1.name)
 # borrowing book
 
 lst_b = []
+
 books = [{"name": "PYTHON", "id": "1", "status": "BORROWED", "author": "DIRAC"},
          {"name": "JAVA", "id": "2", "status": "NOT BORROWED", "author": "ACHILLE"},
          {"name": "PYTHON FOR EVERYBODY", "id": "3", "status": "NOT BORROWED", "author": "FIONA"},

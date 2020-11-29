@@ -19,7 +19,7 @@ class TestStudent(unittest.TestCase):
         assert len(lst_b) == 2
 
     @mock.patch("students.input", create=True)
-    def test_init_book_extend_borrowed_existing_book(self, mocked_input): # this method is testing the successful
+    def test_init_book_extend_borrowed_existing_book(self, mocked_input):  # this method is testing the successful
         # extension of a deadline after borrowing
         student = Student("Fiona", "f.nganga@alustudent.com", "2020", "CS", 2)
         mocked_input.side_effect = ["java"]
@@ -34,17 +34,6 @@ class TestStudent(unittest.TestCase):
         self.password = new_id
         print(student.id)
         self.assertEqual(new_id, self.password)
-
-
-
-
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
