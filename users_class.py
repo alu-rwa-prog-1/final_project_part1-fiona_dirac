@@ -54,7 +54,7 @@ class User:
                 bn = book["name"]
                 bs = book["status"]
                 print("ID: {} Name: {} Status: {}".format(bi, bn, bs))
-
+                return 1
         if i == 0:
             print("The book {} was not found in the list of books".format(book_name))
             return 0
@@ -81,10 +81,11 @@ class User:
                 bi = book["id"]
                 bn = book["name"]
                 bs = book["status"]
-                print("ID: {} Name: {} Status: {}\n".format(bi, bn, bs))
+                print("ID: {} Name: {} Status: {}".format(bi, bn, bs))
+                
 
         if i == 0:
-            print("The author {} has no book in our library\n".format(book_author))
+            print("The author {} has no book in our library".format(book_author))
             return 0
 
     def search_for_book(self, book_list):
@@ -131,13 +132,13 @@ class User:
 # print("{}, {}, {}".format(user.name, user.password, user.email))
 #
 # # see all books
-# books = [{"name": "PYTHON", "id": "1", "status": "BORROWED", "author": "DIRAC"},
-#          {"name": "JAVA", "id": "2", "status": "NOT BORROWED", "author": "ACHILLE"},
-#          {"name": "PYTHON FOR EVERYBODY", "id": "3", "status": "NOT BORROWED", "author": "FIONA"},
-#          {"name": "C++", "id": "4", "status": "NOT BORROWED", "author": "FIONA"},
-#          {"name": "MFC", "id": "5", "status": "NOT BORROWED", "author": "ACHILLE"},
-#          {"name": "HARRY POTTER", "id": "6", "status": "BORROWED", "author": "DIRAC"},
-#          {"name": "PYTHON THE NORMAL WAY", "id": "7", "status": "BORROWED", "author": "DIRAC"}]
+books = [{"name": "PYTHON", "id": "1", "status": "BORROWED", "author": "DIRAC"},
+         {"name": "JAVA", "id": "2", "status": "NOT BORROWED", "author": "ACHILLE"},
+         {"name": "PYTHON FOR EVERYBODY", "id": "3", "status": "NOT BORROWED", "author": "FIONA"},
+         {"name": "C++", "id": "4", "status": "NOT BORROWED", "author": "FIONA"},
+         {"name": "MFC", "id": "5", "status": "NOT BORROWED", "author": "ACHILLE"},
+         {"name": "HARRY POTTER", "id": "6", "status": "BORROWED", "author": "DIRAC"},
+         {"name": "PYTHON THE NORMAL WAY", "id": "7", "status": "BORROWED", "author": "DIRAC"}]
 # user.see_all_book(books)
 #
 # user.find_specific_book([])
