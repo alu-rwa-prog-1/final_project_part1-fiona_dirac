@@ -40,6 +40,7 @@ class Supervisor(User):
         new_book = {"name": name, "id": str(id), "status": "NOT BORROWED", "author": author}
         book_list.append(new_book)
         print("You have successfully added a book")
+        return 1
 
     def remove_book(self, book_list):
 
@@ -62,6 +63,7 @@ class Supervisor(User):
                 return 1
             i += 1
         print("No book was removed from the list. Check your informations")
+        return 0
 
     def return_book(self, list_book, list_borrowed, list_users):
 
@@ -190,10 +192,10 @@ borrowed = [{"name":"DIRAC", "mail": "d.murairi@alustudent.com",
 
 users = [{"name" : "DIRAC", "email" : "d.murairi@alustudent.com", "id" : "001",
             "year" : 2020, "penalty" : 0, "faculty" : "CS"}]
-su.return_book(books, borrowed, users)
-print(books)
-print("====")
-print(borrowed)
-print("====")
-print(users)
-print("====")
+# su.return_book(books, borrowed, users)
+# print(books)
+# print("====")
+# print(borrowed)
+# print("====")
+# print(users)
+# print("====")
