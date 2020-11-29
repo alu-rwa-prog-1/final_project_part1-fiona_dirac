@@ -85,11 +85,7 @@ class Student(User):
                 if student["extended"] == 0:
                     self.update_date(student)
                     student["extended"] += 1
-<<<<<<< HEAD
                     print("You have successfully extended your deadline")
-=======
-                    # message
->>>>>>> 274f9fac69b0ba275b57e0c80c2e5e7cfb51a950
                 else:
                     print("Sorry, You have already extended your deadline")
                     print("You are expected to bring the book on {}/{}".format(student["return_day"], student["return_month"]))
