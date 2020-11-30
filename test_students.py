@@ -40,7 +40,7 @@ class TestStudent(unittest.TestCase):
         new_email = "fionafifs@gmail.com"
         self.email = new_email
         print(student.email)
-        self.assertEqual(new_email, self.password)
+        self.assertEqual(new_email, self.email)
 
     @mock.patch("students.input", create=True)
     def test_init_book_and_try_borrow_for_another_user(self, mocked_input):  # this method tests successful borrowing

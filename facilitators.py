@@ -11,7 +11,18 @@ day = int(day)
 month = int(month)
 
 
+# this is a class for facilitators
+
 class Facilitator(User):
+    """
+           Facilitator
+           ---------
+           The facilitator is a user of the library.
+           The facilitator can:
+               -   Borrow a book
+               -   Extend Borrowing time for a book
+           """
+
     def __init__(self, name, email, id, faculty, year):
         super().__init__(name, email, id)
         self.faculty = faculty
@@ -73,8 +84,8 @@ class Facilitator(User):
         """
         extend_borrowing
         ----------------
-        Thismethod allows the user to extend to 14 days the time he had borrowed a book.
-        it recieves as argument a list of dictionaries holding informations about book_borrowed.
+        This method allows the user to extend to 14 days the time he had borrowed a book.
+        it receives as argument a list of dictionaries holding information about book_borrowed.
         extend_borrowing(borrowed_books)
         ;return: nothing
         """
