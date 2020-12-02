@@ -28,7 +28,7 @@ class TestStudent(unittest.TestCase):
     def test_neg_remove_book(self, mocked_input):
         # we are testing the unsuccessful removal of a book by the function remove_book
         student = Supervisor("Fiona", "f.nganga@alustudent.com", "2020")
-        mocked_input.side_effect = ["PYTHON", "2"]
+        mocked_input.side_effect = ["SCRACTH", "2"]
         i = student.remove_book(books)
         assert i == 0
 
